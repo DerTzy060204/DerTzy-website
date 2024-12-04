@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #page {
+            display: grid;
+            grid-template-areas:
+                "sidebar navbar"
+                "sidebar head"
+                "sidebar main"
+                ". content-a"
+                ". content-b"
+                "foot foot";
+            grid-template-columns: 200px 1320px;
+            grid-template-rows: 120px 250px 740px 1200px 740px 100px;
+        }
+
+        #page>nav {
+            grid-area: navbar;
+            background-color: rgb(240, 130, 180);
+            display: flex;
+            flex-direction: row;
+        }
+
+        #page>aside {
+            height: 720px;
+            grid-area: sidebar;
+            background-color: rgb(192, 130, 240);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            border-right: 2px solid white;
+            position: sticky;
+            top: 0;
+        }
+
+        #page>header {
+            grid-area: head;
+            background-image: linear-gradient(rgba(4, 9, 30, .5), rgba(4, 9, 30, .5)), url('images/bio-background.avif');
+            background-position: center;
+            background-size: cover;
+            border-top: 2px solid white;
+            border-bottom: 2px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #page>main {
+            grid-area: main;
+            background-color: rgb(240, 130, 180);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #page>content-A {
+            grid-area: content-a;
+            background-image: linear-gradient(rgba(4, 9, 30, .5), rgba(4, 9, 30, .5)), url('images/favorites-background.jpg');
+            background-position: center;
+            background-size: cover;
+            border-top: 2px solid white;
+            border-bottom: 2px solid white;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #page>content-B {
+            grid-area: content-b;
+            background-color: rgb(240, 130, 180);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #page>footer {
+            grid-area: foot;
+            background-color: violet;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 120px;
+            width: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-top: 20px;
+        }
+
+        .nav-links {
+            margin-top: 60px;
+        }
+
+        .nav-links ul li {
+            list-style: none;
+            padding-bottom: 50px;
+        }
+
+        .nav-links a {
+            position: relative;
+            text-decoration: none;
+            font-size: 25px;
+            color: white;
+            padding: 0 5px;
+        }
+
+        .nav-links a:hover {
+            color: black;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            background-color: blue;
+            height: 3px;
+            width: 0;
+            left: 5px;
+            bottom: -10px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 90%;
+        }
+
+        .fa-solid {
+            font-size: 40px;
+            position: relative;
+            right: 10px;
+        }
+
+        .student {
+            margin-left: 20px;
+        }
+
+        nav h2 {
+            color: white;
+        }
+
+        .course {
+            margin-left: 330px;
+        }
+
+        .major {
+            margin-left: 90px;
+        }
+
+        .bio {
+            width: 700px;
+            text-align: center;
+        }
+
+        .bio h1 {
+            color: white;
+            font-size: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 240px);
+            grid-template-rows: 300px 300px;
+            gap: 20px;
+        }
+
+        .photos {
+            border: 3px solid white;
+            border-radius: 20px;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .photos:hover {
+            transform: scale(1.1);
+            border: 3px solid black;
+            cursor: pointer;
+        }
+
+        .gallery:hover> :not(:hover) {
+            opacity: 0.5;
+        }
+
+        .photo-1 {
+            background-image: url('images/photo-1.jpg');
+        }
+
+        .photo-2 {
+            background-image: url('images/photo-2.jpg');
+        }
+
+        .photo-3 {
+            background-image: url('images/photo-3.jpg');
+        }
+
+        .photo-4 {
+            background-image: url('images/photo-4.jpg');
+        }
+
+        .photo-5 {
+            background-image: url('images/photo-5.jpg');
+        }
+
+        .photo-6 {
+            background-image: url('images/photo-6.jpg');
+        }
+
+        .photo-7 {
+            background-image: url('images/photo-7.jpg');
+        }
+
+        .photo-8 {
+            background-image: url('images/photo-8.jpg');
+        }
+
+        .photo-9 {
+            background-image: url('images/photo-9.jpg');
+        }
+
+        .photo-10 {
+            background-image: url('images/photo-10.jpg');
+        }
+
+        .contact {
+            position: relative;
+            height: 600px;
+            width: 500px;
+            background-image: linear-gradient(rgba(4, 9, 30, .5), rgba(4, 9, 30, .5)), url('images/contact-background.jpg');
+            background-position: center;
+            background-size: cover;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            grid-template-rows: 150px repeat(3, 50px) 100px 100px 100px;
+            border: 5px solid rgb(255, 0, 51);
+            /* Initial color */
+            animation: rotate-border-one-color 2s linear infinite;
+            /* Add border animation */
+        }
+
+        /* Keyframes for single-color border rotation */
+        @keyframes rotate-border-one-color {
+            0% {
+                border-color: rgb(255, 0, 51);
+                /* Red */
+            }
+
+            25% {
+                border-color: rgb(0, 255, 102);
+                /* Green */
+            }
+
+            50% {
+                border-color: rgb(0, 102, 255);
+                /* Blue */
+            }
+
+            75% {
+                border-color: rgb(255, 255, 0);
+                /* Yellow */
+            }
+
+            100% {
+                border-color: rgb(255, 0, 51);
+                /* Back to Red */
+            }
+        }
+
+        .info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .comment {
+            grid-column: 1/2;
+            grid-row: 6/7;
+        }
+
+        .gender {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .textarea-comment {
+            grid-column: 2/3;
+            grid-row: 6/7;
+        }
+
+        .submit {
+            grid-column: 2/3;
+            grid-row: 7/8;
+        }
+
+        .fname label {
+            margin-top: 100px;
+        }
+
+        .email label {
+            margin-left: 70px;
+        }
+
+        .city label {
+            margin-left: 85px;
+        }
+
+        .comment label {
+            margin-bottom: 70px;
+            margin-left: 40px;
+        }
+
+        label {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 30px;
+        }
+
+        .input-fname input[type=text] {
+            margin-top: 100px;
+        }
+
+        input[type=text] {
+            padding: 10px;
+            padding-right: 100px;
+            margin-right: 70px;
+        }
+
+        select {
+            margin-right: 140px;
+            padding: 10px;
+            padding-right: 100px;
+        }
+
+        textarea {
+            height: 85px;
+            padding-right: 100px;
+            margin-right: 77px;
+        }
+
+        .male {
+            margin-left: 70px;
+        }
+
+        .female {
+            margin-left: 53px;
+        }
+
+        .btnsubmit {
+            padding: 10px 20px 10px 20px;
+            border-radius: 10px;
+            border: none;
+            font-size: 25px;
+            margin-right: 225px;
+            margin-bottom: 30px;
+            background-color: rgb(192, 130, 240);
+            color: white;
+            cursor: pointer;
+        }
+
+        .btnsubmit:hover {
+            border: 3px solid rgb(192, 130, 240);
+            background-color: transparent;
+            color: rgb(192, 130, 240);
+        }
+
+        .favorites-container {
+            display: grid;
+            grid-template-columns: 500px 500px;
+            grid-template-rows: repeat(3, 350px);
+            column-gap: 70px;
+            margin-top: 20px;
+        }
+
+        .favorites {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .favorites h3 {
+            font-size: 30px;
+            color: white;
+            position: relative;
+            bottom: 20px;
+        }
+
+        .fav img {
+            height: 250px;
+            width: 400px;
+            border: 3px solid white;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 400px;
+            height: 280px;
+            perspective: 1000px;
+            border: 3px solid white;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            background-color: #bbb;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flip-card-back {
+            background-color: #2980b9;
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        footer p {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 170px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Page Container -->
+    <div id="page">
+
+        <!-- Navigation -->
+        <nav id="home">
+            <div class="student">
+                <h2><span style="color: black;">Name:</span> KATHLEEN M. TAPIADOR</h2>
+                <h2><span style="color: black;">Student ID:</span> 24-8282</h2>
+            </div>
+            <div class="course">
+                <h2><span style="color: black;">Course:</span> Bachelor of Science in Information Technology</h2>
+                <h2 class="major">Major in Network and System Administration</h2>
+            </div>
+        </nav>
+
+        <!-- Side Bar -->
+        <aside>
+            <div class="logo">
+                <img src="images/kathleen-logo.jpg" alt="logo">
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><i class="fa-solid fa-house-chimney"></i><a href="#home">Home</a></li>
+                    <li><i class="fa-solid fa-image"></i><a href="#gallery">Gallery</a></li>
+                    <li><i class="fa-solid fa-heart"></i><a href="#favorites">Favorites</a></li>
+                    <li><i class="fa-solid fa-address-card"></i><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Header Section -->
+        <header>
+            <div class="bio">
+                <h1>"I am going to make a very beautiful life for myself, no matter what it takes"</h1>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="gallery">
+            <h1>My Gallery</h1>
+            <div class="gallery">
+                <div class="photos photo-1"></div>
+                <div class="photos photo-2"></div>
+                <div class="photos photo-3"></div>
+                <div class="photos photo-4"></div>
+                <div class="photos photo-5"></div>
+                <div class="photos photo-6"></div>
+                <div class="photos photo-7"></div>
+                <div class="photos photo-8"></div>
+                <div class="photos photo-9"></div>
+                <div class="photos photo-10"></div>
+            </div>
+        </main>
+
+        <!-- Content A -->
+        <content-A id="favorites">
+            <h1 style="color: white;">Favorites</h1>
+            <div class="favorites-container">
+                <div class="favorites anime">
+                    <div class="fav anime-photo">
+                        <img src="images/naruto.gif" alt="">
+                    </div>
+                    <h3>Anime</h3>
+                </div>
+                <div class="favorites pet">
+                    <div class="fav pet-photo">
+                        <img src="images/dog.gif" alt="">
+                    </div>
+                    <h3>Pet</h3>
+                </div>
+                <div class="favorites food">
+                    <div class="fav food-photo">
+                        <img src="images/samgyupsal.gif" alt="">
+                    </div>
+                    <h3>Food</h3>
+                </div>
+                <div class="favorites color">
+                    <div class="fav color-photo">
+                        <img src="images/blue-hearts.gif" alt="">
+                    </div>
+                    <h3>Color</h3>
+                </div>
+                <div class="favorites nature">
+                    <div class="fav nature-photo">
+                        <img src="images/sunset.gif" alt="">
+                    </div>
+                    <h3>Nature</h3>
+                </div>
+                <div class="favorites person">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h1>My Enemy</h1>
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="images/person.jpg" alt="Avatar" style="width:400px;height:250px;">
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Person</h3>
+                </div>
+            </div>
+        </content-A>
+
+        <!-- Content B -->
+        <content-B id="contact">
+            <h1>Contact</h1>
+            <form action="/submit" method="POST">
+                <div class="contact">
+                    <div class="info fname">
+                        <label for="name">First Name:</label>
+                    </div>
+                    <div class="info input-fname">
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="info lname">
+                        <label for="name">Last Name:</label>
+                    </div>
+                    <div class="info input-lname">
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="info email">
+                        <label for="name">Email:</label>
+                    </div>
+                    <div class="info input-email">
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="info city">
+                        <label for="city">City:</label>
+                    </div>
+                    <div class="info select-city">
+                        <select id="country" name="country">
+                            <option value="santaRosa">Santa Rosa</option>
+                            <option value="cabuyao">Cabuyao</option>
+                            <option value="calamba">Calamba</option>
+                            <option value="sanPedro">San Pedro</option>
+                            <option value="biñan">Biñan</option>
+                        </select>
+                    </div>
+                    <div class="info gender">
+                        <label class="male">Male
+                            <input type="radio" checked="checked" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="female">Female
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="info comment">
+                        <label for="name">Comment:</label>
+                    </div>
+                    <div class="info textarea-comment">
+                        <textarea id="subject" name="subject" placeholder="Write something.."></textarea>
+                    </div>
+                    <div class="info submit">
+                        <button class="btnsubmit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </content-B>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 My Web Page || Kathleen Tapiador</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
